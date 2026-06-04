@@ -464,6 +464,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -682,6 +683,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 9165086398912695149, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_MUSIC
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -711,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 830211128300761025, guid: 46271f20bd94466419d79b7514286046, type: 3}
       propertyPath: m_fontSizeMax
       value: 63.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451634452595705330, guid: 46271f20bd94466419d79b7514286046, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_PRIVACY
       objectReference: {fileID: 0}
     - target: {fileID: 6207239069157652968, guid: 46271f20bd94466419d79b7514286046, type: 3}
       propertyPath: m_Pivot.x
@@ -829,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 2117372353034714439, guid: 3b2091fe77679764aa106b96d8bd615e, type: 3}
       propertyPath: m_fontSize
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810642298283169652, guid: 3b2091fe77679764aa106b96d8bd615e, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_SUPPORT
       objectReference: {fileID: 0}
     - target: {fileID: 4666680821275290478, guid: 3b2091fe77679764aa106b96d8bd615e, type: 3}
       propertyPath: m_Pivot.x
@@ -1036,11 +1049,49 @@ PrefabInstance:
       propertyPath: m_text
       value: Language
       objectReference: {fileID: 0}
+    - target: {fileID: 9165086398912695149, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_LANGUAGE
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 502008691029571064, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2608890651269606524}
   m_SourcePrefab: {fileID: 100100000, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+--- !u!114 &1248869396966632768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3849935927601961410, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+  m_PrefabInstance: {fileID: 2610214549017064578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2507984318447354234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 502008691029571064, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+  m_PrefabInstance: {fileID: 2610214549017064578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2608890651269606524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507984318447354234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10000000000000000000000000000103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.Localization.LanguageSelector
+  flagImage: {fileID: 1248869396966632768}
+  englishFlag: {fileID: 21300000, guid: 0dea2ac7eb725604792a60b1ead0e1d7, type: 3}
+  spanishFlag: {fileID: 2294478302242662964, guid: 4c003e34a2e6cc8468e51ac64ad28f9c, type: 3}
 --- !u!224 &6984749382772229280 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4960583885822062626, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
@@ -1145,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 8467260160406562873, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
       propertyPath: m_text
       value: Notifications
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165086398912695149, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_NOTIFICATIONS
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1255,6 +1310,10 @@ PrefabInstance:
     - target: {fileID: 8467260160406562873, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
       propertyPath: m_text
       value: Sound
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165086398912695149, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_SOUND
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1420,12 +1479,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5109793330410234097, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 749425064285173600}
+    - targetCorrespondingSourceObject: {fileID: 5984301759902019249, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2091310304315851902}
   m_SourcePrefab: {fileID: 100100000, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
 --- !u!95 &274906172934742300 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5980806034747432032, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
   m_PrefabInstance: {fileID: 5823364134119701884}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &278163715843429325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5984301759902019249, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
+  m_PrefabInstance: {fileID: 5823364134119701884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091310304315851902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278163715843429325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10000000000000000000000000000102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.Localization.LocalizedText
+  localizationKey: SETTINGS_TITLE
 --- !u!1 &1601345388918824333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5109793330410234097, guid: dc6d0589d74031d4a987127d625e61d7, type: 3}
@@ -1556,6 +1636,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 9165086398912695149, guid: 999a922ece1f67647899098b7d0c2b38, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_VIBRATION
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1585,6 +1669,10 @@ PrefabInstance:
     - target: {fileID: 830211128300761025, guid: 46271f20bd94466419d79b7514286046, type: 3}
       propertyPath: m_fontSizeMax
       value: 63.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451634452595705330, guid: 46271f20bd94466419d79b7514286046, type: 3}
+      propertyPath: localizationKey
+      value: SETTINGS_TC
       objectReference: {fileID: 0}
     - target: {fileID: 6207239069157652968, guid: 46271f20bd94466419d79b7514286046, type: 3}
       propertyPath: m_Pivot.x

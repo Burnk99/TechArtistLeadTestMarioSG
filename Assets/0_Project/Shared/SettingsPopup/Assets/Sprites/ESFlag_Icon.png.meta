@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c950da4863d4cf04dac11e9f0ab6267b
+guid: 4c003e34a2e6cc8468e51ac64ad28f9c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5107433002507735877
-    second: HomeBack_0
+      213: 2294478302242662964
+    second: ESFlag_Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +54,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 0
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HomeBack_0
+      name: ESFlag_Icon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2484
-        height: 5236
+        width: 233
+        height: 158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbc6b6b9eb0ce19b0800000000000000
-      internalID: -5107433002507735877
+      spriteID: 43ae306fbdf97df10800000000000000
+      internalID: 2294478302242662964
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HomeBack_0: -5107433002507735877
+      ESFlag_Icon_0: 2294478302242662964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

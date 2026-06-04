@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402453968746325853}
   - component: {fileID: 8556985355512174094}
+  - component: {fileID: 2028775032171181279}
   m_Layer: 5
   m_Name: GenericTextButton
   m_TagString: Untagged
@@ -205,6 +206,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2028775032171181279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106790567281361150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1413b8615eff0294bb5dccdc92e55f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.UI.ButtonAnimator
+  scaleFactor: 0.92
+  animationDuration: 0.15
+  easeDown: 6
+  easeUp: 27
 --- !u!1 &4758872464115807469
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +233,7 @@ GameObject:
   - component: {fileID: 4463292109155101517}
   - component: {fileID: 264446159210735909}
   - component: {fileID: 5681167650056974708}
+  - component: {fileID: 7446697536149314375}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -308,6 +326,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -341,3 +360,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7446697536149314375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758872464115807469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10000000000000000000000000000102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.Localization.LocalizedText
+  localizationKey: 

@@ -197,6 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402453968746325853}
   - component: {fileID: 8556985355512174094}
+  - component: {fileID: 4301239609607876111}
   m_Layer: 5
   m_Name: GenericIconButton
   m_TagString: Untagged
@@ -280,3 +281,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4301239609607876111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106790567281361150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1413b8615eff0294bb5dccdc92e55f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.UI.ButtonAnimator
+  scaleFactor: 0.92
+  animationDuration: 0.15
+  easeDown: 6
+  easeUp: 27

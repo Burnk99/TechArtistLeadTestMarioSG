@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660741802134872611}
   - component: {fileID: 505527572657640324}
+  - component: {fileID: 3252405248550801661}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -330,6 +331,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3252405248550801661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5365789998340861474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1413b8615eff0294bb5dccdc92e55f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.UI.ButtonAnimator
+  scaleFactor: 0.92
+  animationDuration: 0.15
+  easeDown: 6
+  easeUp: 27
 --- !u!1 &5984301759902019249
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +452,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

@@ -1,0 +1,13 @@
+{
+    "translations": [
+        {"key": "SETTINGS_MUSIC", "en": "Music", "es": "Música"},
+        {"key": "SETTINGS_PRIVACY", "en": "Privacy", "es": "Privacidad"},
+        {"key": "SETTINGS_SUPPORT", "en": "Support", "es": "Soporte"},
+        {"key": "SETTINGS_LANGUAGE", "en": "Language", "es": "Idioma"},
+        {"key": "SETTINGS_NOTIFICATIONS", "en": "Notifications", "es": "Notificaciones"},
+        {"key": "SETTINGS_SOUND", "en": "Sound", "es": "Sonido"},
+        {"key": "SETTINGS_TITLE", "en": "Settings", "es": "Ajustes"},
+        {"key": "SETTINGS_VIBRATION", "en": "Vibration", "es": "Vibración"},
+        {"key": "SETTINGS_TC", "en": "T&C", "es": "T&C"}
+    ]
+}

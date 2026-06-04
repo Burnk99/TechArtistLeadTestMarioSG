@@ -143,5 +143,26 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4758872464115807469, guid: c7f5685462de3864fb7eb1ddd49e5dc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6975532366453508995}
   m_SourcePrefab: {fileID: 100100000, guid: c7f5685462de3864fb7eb1ddd49e5dc9, type: 3}
+--- !u!1 &1278754311966914782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4758872464115807469, guid: c7f5685462de3864fb7eb1ddd49e5dc9, type: 3}
+  m_PrefabInstance: {fileID: 6031979130210995251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6975532366453508995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278754311966914782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10000000000000000000000000000102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.Localization.LocalizedText
+  localizationKey: 

@@ -1346,8 +1346,28 @@ PrefabInstance:
       value: Header
       objectReference: {fileID: 0}
     - target: {fileID: 3244042243831851531, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244042243831851531, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248569488809044591, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248569488809044591, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248569488809044591, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248569488809044591, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3391476012002417320, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1526,7 +1546,8 @@ PrefabInstance:
       value: SettingsButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3918696774744681447, guid: b1590971b87cae44683a1fc0646474a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1590971b87cae44683a1fc0646474a8, type: 3}

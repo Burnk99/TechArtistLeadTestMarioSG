@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6737854184809650503}
   - component: {fileID: 886865844442867085}
   - component: {fileID: 3888197846193799119}
+  - component: {fileID: 1590207922406192417}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -75,6 +76,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1590207922406192417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502008691029571064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1413b8615eff0294bb5dccdc92e55f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.UI.ButtonAnimator
+  scaleFactor: 0.92
+  animationDuration: 0.15
+  easeDown: 6
+  easeUp: 27
 --- !u!1 &4121579553217198907
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +103,7 @@ GameObject:
   - component: {fileID: 7453892340002679346}
   - component: {fileID: 1159364538035326269}
   - component: {fileID: 8467260160406562873}
+  - component: {fileID: 9165086398912695149}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -178,6 +196,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -211,6 +230,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9165086398912695149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121579553217198907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10000000000000000000000000000102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TechArtistLeadTest.Localization.LocalizedText
+  localizationKey: 
 --- !u!1 &5277086034250515838
 GameObject:
   m_ObjectHideFlags: 0
