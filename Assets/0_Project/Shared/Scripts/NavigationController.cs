@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class NavigationController : MonoBehaviour
 {
-    
-    //  Load scene by name
-    public void LoadScene(string sceneName)
+    public void LoadHomeScreen()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneNames.HomeScreen);
     }
 
+    public void LoadLevelCompletedScreen()
+    {
+        SceneManager.LoadScene(SceneNames.LevelCompletedScreen);
+    }
 }
