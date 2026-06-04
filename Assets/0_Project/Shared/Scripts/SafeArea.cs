@@ -111,7 +111,7 @@ using UnityEngine;
         ScreenOrientation LastOrientation = ScreenOrientation.AutoRotation;
         [SerializeField] bool ConformX = true;  // Conform to screen safe area on X-axis (default true, disable to ignore)
         [SerializeField] bool ConformY = true;  // Conform to screen safe area on Y-axis (default true, disable to ignore)
-        [SerializeField] bool Logging = false;  // Conform to screen safe area on Y-axis (default true, disable to ignore)
+        [SerializeField] bool Logging = false;  // Enable debug logging for safe area changes
 
         void Awake ()
         {

@@ -1,8 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-
+namespace TechArtistLeadTest.UI.Footer
+{
+    /// <summary>
+    /// Manages the state of the footer navigation bar.
+    /// Listens to click events from all ButtonFooterControllers, updates their
+    /// selected/deselected states, and animates the sliding indicator between tabs.
+    /// </summary>
     public class MenuFooterController : MonoBehaviour
     {
         [Header("Components")]
@@ -10,26 +17,23 @@ using UnityEngine;
         [SerializeField] private ButtonFooterController startSelected;
         [SerializeField] private List<ButtonFooterController> footerButtons;
 
-        //Internal
+        [Header("Animation Settings")]
+        // [REFACTOR] Magic numbers exposed to Inspector so designers can tune them.
+        [SerializeField] private float _indicatorSmoothTime = 0.08f; // Lower is faster. Gives a fast start, smooth stop.
+
+        // Internal state
         private ButtonFooterController _buttonSelected;
         private GameObject _currentSlot;
+        private float _indicatorVelocity;
 
-        void Awake()
+        IEnumerator Start()
         {
-            // [FIX] Hide the indicator initially to prevent a visual glitch where it briefly 
-            // flashes at the center (0,0) before the HorizontalLayoutGroup calculates the final button positions.
-            if (indicator != null) indicator.SetActive(false);
-        }
-
-        System.Collections.IEnumerator Start()
-        {
-            // [FIX] Wait until the end of the frame to ensure the UI Layout system (HorizontalLayoutGroup)
-            // has finished positioning all footer buttons before we try to move the indicator to their transform.position.
+            // Wait for HorizontalLayoutGroup to position the buttons before snapping
             yield return new WaitForEndOfFrame();
 
             ButtonFooterController targetButton = startSelected;
             
-            // If not assigned in inspector, auto-select the middle button (Home)
+            // [FIX] Auto-select the middle button (Home) if none is assigned in the Inspector
             if (targetButton == null && footerButtons != null && footerButtons.Count > 0)
             {
                 targetButton = footerButtons[footerButtons.Count / 2];
@@ -38,10 +42,8 @@ using UnityEngine;
             if (targetButton != null)
             {
                 OnButtonClickedEvent(targetButton);
-                
-                // [FIX] Snap the indicator instantly to the selected button on boot.
-                // This prevents the indicator from visibly tweening/sliding from the center of the screen
-                // when the scene is first loaded.
+
+                // Snap indicator instantly
                 if (_currentSlot != null)
                 {
                     indicator.transform.DOKill();
@@ -72,15 +74,32 @@ using UnityEngine;
             }
         }
 
+        void Update()
+        {
+            if (indicator.activeInHierarchy && _currentSlot != null)
+            {
+                // [FIX] Mathf.SmoothDamp perfectly tracks moving targets.
+                // Since the HorizontalLayoutGroup shifts the buttons slightly when they animate, 
+                // a static tween misses the target. SmoothDamp guarantees we always arrive exactly
+                // at the button's final position with a "fast start, smooth slow down" ease.
+                float currentX = indicator.transform.position.x;
+                float targetX = _currentSlot.transform.position.x;
+                
+                float newX = Mathf.SmoothDamp(currentX, targetX, ref _indicatorVelocity, _indicatorSmoothTime);
+                
+                indicator.transform.position = new Vector3(newX,
+                                                           indicator.transform.position.y,
+                                                           indicator.transform.position.z);
+            }
+        }
 
-        private void OnButtonClickedEvent(
-            ButtonFooterController buttonClicked)
+
+        private void OnButtonClickedEvent(ButtonFooterController buttonClicked)
         {
             if (footerButtons.Contains(buttonClicked))
             {
-                // [FIX] Prevent deselection. If the user taps the currently active tab, we exit early.
-                // Standard bottom navigation bars should always have one active tab and should not 
-                // hide the indicator if tapped again.
+                // [REFACTOR] Prevent deselection. A bottom navigation bar should always
+                // have one active tab and shouldn't hide the indicator if tapped again.
                 if (_buttonSelected == buttonClicked)
                 {
                     return;
@@ -97,35 +116,22 @@ using UnityEngine;
             }
         }
 
+        /// <summary>
+        /// Animates the selection indicator to slide to the exact visual center of the newly selected button.
+        /// </summary>
         private void MoveIndicator()
         {
             if (_buttonSelected == null) return;
+
             if (_currentSlot == _buttonSelected.gameObject) return;
+
             _currentSlot = _buttonSelected.gameObject;
 
             indicator.SetActive(true);
-            indicator.transform.DOKill();
             
-            float duration = 0.35f;
-            float stretchScale = 1.35f; // Reduced from 2.0f for a more subtle stretching effect
-
-            Sequence seq = DOTween.Sequence();
-            seq.SetUpdate(true);
-
-            // Move the indicator to the target using a smooth InOut ease
-            seq.Append(indicator.transform.DOMoveX(_currentSlot.transform.position.x, duration).SetEase(Ease.InOutQuad));
-
-            // Simultaneously stretch it horizontally during the first half of the movement, then squash back during the second half
-            seq.Insert(0, indicator.transform.DOScaleX(stretchScale, duration / 2f).SetEase(Ease.OutQuad));
-            seq.Insert(duration / 2f, indicator.transform.DOScaleX(1f, duration / 2f).SetEase(Ease.InQuad));
-            
-            seq.OnComplete(() =>
-            {
-                indicator.transform.position = new Vector3(_currentSlot.transform.position.x,
-                                                            indicator.transform.position.y,
-                                                            indicator.transform.position.z);
-                // Ensure scale resets perfectly
-                indicator.transform.localScale = Vector3.one;
-            });
+            // Note: The actual animation is now handled dynamically in Update() using SmoothDamp.
+            // This prevents the "snap bounce" bug where the LayoutGroup shifts the button's position
+            // mid-animation. SmoothDamp automatically adjusts its trajectory on the fly.
         }
     }
+} // namespace TechArtistLeadTest.UI.Footer

@@ -23,8 +23,15 @@ namespace TechArtistLeadTest.UI
         
         private void OnDisable()
         {
+            // Kill tweens so they don't fight with the reset or run after destruction
+            transform.DOKill();
             // Reset scale if object gets disabled while pressed to avoid staying shrunk
             transform.localScale = _originalScale;
+        }
+
+        private void OnDestroy()
+        {
+            transform.DOKill();
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -35,7 +42,8 @@ namespace TechArtistLeadTest.UI
             transform.DOKill(false);
             transform.DOScale(_originalScale * scaleFactor, animationDuration)
                      .SetEase(easeDown)
-                     .SetUpdate(true);
+                     .SetUpdate(true)
+                     .SetLink(gameObject);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -45,7 +53,8 @@ namespace TechArtistLeadTest.UI
             transform.DOKill(false);
             transform.DOScale(_originalScale, animationDuration)
                      .SetEase(easeUp)
-                     .SetUpdate(true);
+                     .SetUpdate(true)
+                     .SetLink(gameObject);
         }
     }
 }

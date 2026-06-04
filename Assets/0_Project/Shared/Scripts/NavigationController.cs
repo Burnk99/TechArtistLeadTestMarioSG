@@ -1,15 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NavigationController : MonoBehaviour
+namespace TechArtistLeadTest.Core
 {
-    public void LoadHomeScreen()
+    /// <summary>
+    /// Handles scene transitions between the main screens of the application.
+    /// Uses the SceneNames constants class to avoid fragile hardcoded string references.
+    /// </summary>
+    public class NavigationController : MonoBehaviour
     {
-        SceneManager.LoadScene(SceneNames.HomeScreen);
-    }
+        /// <summary>Loads the Home Screen scene.</summary>
+        public void LoadHomeScreen()
+        {
+            SceneManager.LoadScene(SceneNames.HomeScreen);
+        }
 
-    public void LoadLevelCompletedScreen()
-    {
-        SceneManager.LoadScene(SceneNames.LevelCompletedScreen);
+        /// <summary>Loads the Level Completed Screen scene.</summary>
+        public void LoadLevelCompletedScreen()
+        {
+            SceneManager.LoadScene(SceneNames.LevelCompletedScreen);
+        }
     }
-}
+} // namespace TechArtistLeadTest.Core
