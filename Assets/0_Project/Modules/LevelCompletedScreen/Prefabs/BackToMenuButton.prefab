@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4106790567281361150, guid: c84ef122c44fc0049a48f50314788a3d, type: 3}
       propertyPath: m_Name
-      value: BackToMenuButton Variant
+      value: BackToMenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 6494322844454801808, guid: c84ef122c44fc0049a48f50314788a3d, type: 3}
       propertyPath: m_Sprite
