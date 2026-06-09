@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace TechArtistLeadTest.UI
+namespace TechArtTeamLeadTest.UI
 {
     /// <summary>
     /// Autonomous component that handles visual toggling (Sprite swapping & Animation)

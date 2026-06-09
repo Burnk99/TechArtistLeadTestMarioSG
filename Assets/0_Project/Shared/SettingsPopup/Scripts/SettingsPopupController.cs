@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Serialization;
 using DG.Tweening;
 
-namespace TechArtistLeadTest.UI
+namespace TechArtTeamLeadTest.UI
 {
 
 /// <summary>
