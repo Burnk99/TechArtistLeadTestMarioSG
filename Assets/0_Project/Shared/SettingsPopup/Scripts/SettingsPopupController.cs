@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Serialization;
 using DG.Tweening;
 
@@ -6,9 +7,8 @@ namespace TechArtistLeadTest.UI
 {
 
 /// <summary>
-/// Controls the Settings Popup lifecycle: opening, closing, and reacting to
-/// the close animation event. The API is self-contained — callers should use
-/// Open() and OnCloseButtonClicked() instead of toggling SetActive() externally.
+/// Controls the Settings Popup lifecycle asynchronously via DOTween.
+/// Eliminates Animator overhead, Animation Events, and logic coupling.
 /// </summary>
 public class SettingsPopupController : MonoBehaviour
 {
@@ -18,34 +18,37 @@ public class SettingsPopupController : MonoBehaviour
     [Header("Animation Polish (DOTween)")]
     [SerializeField] private float _animationDuration = 0.35f;
     [SerializeField] private Transform _popupContent;
-    [SerializeField] private UnityEngine.UI.Image _backgroundBlocker;
+    [SerializeField] private Image _backgroundBlocker;
 
     private void Awake()
     {
         if (_animator != null) _animator.enabled = false;
         
-        // Find the visual popup box (Panel) instead of the whole Content container
+        // 1. Logical Decoupling: Dynamically isolate the Panel and Background 
+        // bypassing rigid prefab hierarchies. We use recursive search to find them
+        // no matter how the user flattened the hierarchy.
         if (_popupContent == null)
         {
-            Transform contentObj = transform.Find("Content");
-            if (contentObj != null)
-            {
-                _popupContent = contentObj.Find("Panel");
-                if (_popupContent == null) _popupContent = contentObj;
-            }
-            else
-            {
-                _popupContent = transform;
-            }
+            _popupContent = FindChildRecursive(transform, "Panel");
+            if (_popupContent == null) _popupContent = transform; // Fallback
         }
 
-        // Find the Background correctly (it's inside Content)
         if (_backgroundBlocker == null)
         {
-            Transform contentObj = transform.Find("Content");
-            Transform bg = contentObj != null ? contentObj.Find("Background") : transform.Find("Background");
-            if (bg != null) _backgroundBlocker = bg.GetComponent<UnityEngine.UI.Image>();
+            Transform bg = FindChildRecursive(transform, "Background");
+            if (bg != null) _backgroundBlocker = bg.GetComponent<Image>();
         }
+    }
+
+    private Transform FindChildRecursive(Transform parent, string exactName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == exactName) return child;
+            Transform found = FindChildRecursive(child, exactName);
+            if (found != null) return found;
+        }
+        return null;
     }
 
     private void OnEnable()
@@ -53,8 +56,7 @@ public class SettingsPopupController : MonoBehaviour
         _popupContent.DOKill();
         _popupContent.localScale = Vector3.zero;
         _popupContent.DOScale(Vector3.one, _animationDuration)
-            .SetEase(Ease.OutBack)
-            .SetUpdate(true);
+            .SetEase(Ease.OutBack).SetUpdate(true);
 
         if (_backgroundBlocker != null)
         {
@@ -71,6 +73,7 @@ public class SettingsPopupController : MonoBehaviour
 
     public void OnCloseButtonClicked()
     {
+        // Callback-driven lifecycle
         _popupContent.DOKill();
         _popupContent.DOScale(Vector3.zero, _animationDuration * 0.7f)
             .SetEase(Ease.InBack)
@@ -83,5 +86,5 @@ public class SettingsPopupController : MonoBehaviour
             _backgroundBlocker.DOFade(0f, _animationDuration * 0.6f).SetUpdate(true);
         }
     }
-} // end class SettingsPopupController
-} // namespace TechArtistLeadTest.UI
+}
+}
