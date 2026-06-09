@@ -78,14 +78,18 @@ namespace TechArtistLeadTest.UI.Footer
         {
             if (indicator.activeInHierarchy && _currentSlot != null)
             {
+                // [FIX] Calculate the true visual center of the target button (ignoring pivots & layout constraints)
+                Vector3[] corners = new Vector3[4];
+                _currentSlot.GetComponent<RectTransform>().GetWorldCorners(corners);
+                float targetCenterX = (corners[0].x + corners[3].x) / 2f;
+
                 // [FIX] Mathf.SmoothDamp perfectly tracks moving targets.
                 // Since the HorizontalLayoutGroup shifts the buttons slightly when they animate, 
                 // a static tween misses the target. SmoothDamp guarantees we always arrive exactly
                 // at the button's final position with a "fast start, smooth slow down" ease.
                 float currentX = indicator.transform.position.x;
-                float targetX = _currentSlot.transform.position.x;
                 
-                float newX = Mathf.SmoothDamp(currentX, targetX, ref _indicatorVelocity, _indicatorSmoothTime);
+                float newX = Mathf.SmoothDamp(currentX, targetCenterX, ref _indicatorVelocity, _indicatorSmoothTime);
                 
                 indicator.transform.position = new Vector3(newX,
                                                            indicator.transform.position.y,

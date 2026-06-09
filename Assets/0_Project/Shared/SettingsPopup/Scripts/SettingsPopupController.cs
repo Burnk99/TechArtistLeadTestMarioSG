@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using DG.Tweening;
 
 namespace TechArtistLeadTest.UI
 {
@@ -11,44 +12,76 @@ namespace TechArtistLeadTest.UI
 /// </summary>
 public class SettingsPopupController : MonoBehaviour
 {
-    // [FormerlySerializedAs] tells Unity to remap the old serialized field name "animator"
-    // to the new name "_animator", preserving all existing Prefab references after the rename.
     [FormerlySerializedAs("animator")]
     [SerializeField] private Animator _animator;
 
-    // [REFACTOR] Animator trigger name cached as a hash to avoid magic strings.
-    // This prevents typo-silent failures and is faster at runtime than string lookups.
-    private static readonly int CloseHash = Animator.StringToHash("Close");
+    [Header("Animation Polish (DOTween)")]
+    [SerializeField] private float _animationDuration = 0.35f;
+    [SerializeField] private Transform _popupContent;
+    [SerializeField] private UnityEngine.UI.Image _backgroundBlocker;
 
-    /// <summary>
-    /// Opens the popup. Activates the GameObject so the Animator can run
-    /// its entrance state automatically on enable.
-    /// </summary>
+    private void Awake()
+    {
+        if (_animator != null) _animator.enabled = false;
+        
+        // Find the visual popup box (Panel) instead of the whole Content container
+        if (_popupContent == null)
+        {
+            Transform contentObj = transform.Find("Content");
+            if (contentObj != null)
+            {
+                _popupContent = contentObj.Find("Panel");
+                if (_popupContent == null) _popupContent = contentObj;
+            }
+            else
+            {
+                _popupContent = transform;
+            }
+        }
+
+        // Find the Background correctly (it's inside Content)
+        if (_backgroundBlocker == null)
+        {
+            Transform contentObj = transform.Find("Content");
+            Transform bg = contentObj != null ? contentObj.Find("Background") : transform.Find("Background");
+            if (bg != null) _backgroundBlocker = bg.GetComponent<UnityEngine.UI.Image>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        _popupContent.DOKill();
+        _popupContent.localScale = Vector3.zero;
+        _popupContent.DOScale(Vector3.one, _animationDuration)
+            .SetEase(Ease.OutBack)
+            .SetUpdate(true);
+
+        if (_backgroundBlocker != null)
+        {
+            _backgroundBlocker.DOKill();
+            _backgroundBlocker.color = new Color(0f, 0f, 0f, 0f);
+            _backgroundBlocker.DOFade(0.5f, _animationDuration * 0.8f).SetUpdate(true);
+        }
+    }
+
     public void Open()
     {
-        // [FIX] Previously, opening was handled externally via SetActive(true), 
-        // creating an implicit contract that callers had to know about.
-        // Centralising it here makes the API explicit and self-contained.
         gameObject.SetActive(true);
     }
 
-    /// <summary>
-    /// Triggers the close animation. The GameObject is deactivated at the end
-    /// of the animation via the OnClosedAnimationCompleted event (called by Animation Event).
-    /// </summary>
     public void OnCloseButtonClicked()
     {
-        // [REFACTOR] Using cached hash instead of raw string "Close"
-        _animator.SetTrigger(CloseHash);
-    }
+        _popupContent.DOKill();
+        _popupContent.DOScale(Vector3.zero, _animationDuration * 0.7f)
+            .SetEase(Ease.InBack)
+            .SetUpdate(true)
+            .OnComplete(() => gameObject.SetActive(false));
 
-    /// <summary>
-    /// Called via Animation Event at the end of the close animation.
-    /// Deactivates the GameObject to return it to its pooled/hidden state.
-    /// </summary>
-    public void OnClosedAnimationCompleted()
-    {
-        gameObject.SetActive(false);
+        if (_backgroundBlocker != null)
+        {
+            _backgroundBlocker.DOKill();
+            _backgroundBlocker.DOFade(0f, _animationDuration * 0.6f).SetUpdate(true);
+        }
     }
 } // end class SettingsPopupController
 } // namespace TechArtistLeadTest.UI
